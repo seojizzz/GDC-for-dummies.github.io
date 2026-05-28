@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>GDC for Dummies — Graphic Display Calculator Guide</title>
+</head>
+
+<body>
+
+    <!-- ── HEADER ─────────────────────────────────────────── -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="index.html">GDC for Dummies</a>
+            </div>
+        </div>
+        <div class="header-right">
+            <input type="text" placeholder="Search..." class="search-bar" aria-label="Search">
+            <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <!-- ── DESKTOP NAV ────────────────────────────────────── -->
+    <nav class="contents-bar" aria-label="Main navigation">
+        <ul>
+            <li class="dropdown sec-how">
+                <a href="0-how-to-use/index.html" class="dropdown-title">How to use the GDC</a>
+                <ul class="dropdown-menu">
+                    <li><a href="0-how-to-use/index.html">Introduction</a></li>
+                    <li><a href="0-how-to-use/hardware-tools.html">Hardware tools</a></li>
+                    <li><a href="0-how-to-use/pages-and-problems.html">Pages &amp; Problems</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown sec-calc">
+                <a href="1-calculator/index.html" class="dropdown-title">1. Calculator</a>
+                <ul class="dropdown-menu">
+                    <li><a href="1-calculator/index.html">Overview</a></li>
+                    <li><a href="1-calculator/define.html">Define</a></li>
+                    <li><a href="1-calculator/numbers.html">Numbers</a></li>
+                    <li><a href="1-calculator/equations.html">Solving Equations</a></li>
+                    <li><a href="1-calculator/calculus.html">Calculus</a></li>
+                    <li><a href="1-calculator/probability.html">Probability</a></li>
+                    <li><a href="1-calculator/finance.html">Finance</a></li>
+                    <li><a href="1-calculator/matrices.html">Matrix &amp; Vector (Linear Algebra)</a></li>
+                    <li><a href="1-calculator/misc.html">Others</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown sec-graph">
+                <a href="2-graphing/index.html" class="dropdown-title">2. Graphing</a>
+                <ul class="dropdown-menu">
+                    <li><a href="2-graphing/index.html">Overview</a></li>
+                    <li><a href="2-graphing/plotting.html">Plotting Graphs</a></li>
+                    <li><a href="2-graphing/navigation.html">Navigating the Plane</a></li>
+                    <li><a href="2-graphing/zoom.html">Zoom (advanced)</a></li>
+                    <li><a href="2-graphing/trace.html">Graph Trace</a></li>
+                    <li><a href="2-graphing/analyze.html">Analyze Graph</a></li>
+                    <li><a href="2-graphing/table.html">Split-Screen Table</a></li>
+                    <li><a href="2-graphing/misc.html">Others</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown sec-stats">
+                <a href="3-statistics/index.html" class="dropdown-title">3. Lists &amp; Statistics</a>
+                <ul class="dropdown-menu">
+                    <li><a href="3-statistics/index.html">Overview</a></li>
+                    <li><a href="3-statistics/basics.html">Basic actions and operations</a></li>
+                    <li><a href="3-statistics/formulas.html">Cell Propagation and formulas</a></li>
+                    <li><a href="3-statistics/univariate.html">Univariate Statistics</a></li>
+                    <li><a href="3-statistics/bivariate-regression.html">Bivariate Statistics &amp; Regression</a></li>
+                    <li><a href="3-statistics/euler.html">Euler's Method &amp; iterative methods</a></li>
+                </ul>
+            </li>
+
+            <li class="sec-other">
+                <a href="4-cheatsheet/index.html">Cheat Sheet</a>
+            </li>
+
+            <li class="dropdown sec-other">
+                <a href="5-others/index.html" class="dropdown-title">Others</a>
+                <ul class="dropdown-menu">
+                    <li><a href="5-others/index.html">Tips</a></li>
+                    <li><a href="5-others/abouttheauthor.html">About the Author</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ── MOBILE SIDEBAR OVERLAY ─────────────────────────── -->
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- ── PAGE WRAPPER (sidebar + main) ─────────────────── -->
+    <div class="page-wrapper">
+
+        <!-- Mobile sidebar -->
+        <aside class="sidebar" id="sidebar" aria-label="Mobile navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+
+                <li class="collapse sec-how">
+                    <span>How to use the GDC</span>
+                    <ul>
+                        <li><a href="0-how-to-use/index.html">Introduction</a></li>
+                        <li><a href="0-how-to-use/hardware-tools.html">Hardware tools</a></li>
+                        <li><a href="0-how-to-use/pages-and-problems.html">Pages &amp; Problems</a></li>
+                    </ul>
+                </li>
+
+                <li class="collapse sec-calc">
+                    <span>1. Calculator</span>
+                    <ul>
+                        <li><a href="1-calculator/index.html">Overview</a></li>
+                        <li><a href="1-calculator/define.html">Define</a></li>
+                        <li><a href="1-calculator/numbers.html">Numbers</a></li>
+                        <li><a href="1-calculator/equations.html">Solving Equations</a></li>
+                        <li><a href="1-calculator/calculus.html">Calculus</a></li>
+                        <li><a href="1-calculator/probability.html">Probability</a></li>
+                        <li><a href="1-calculator/finance.html">Finance</a></li>
+                        <li><a href="1-calculator/matrices.html">Matrix &amp; Vector (Linear Algebra)</a></li>
+                        <li><a href="1-calculator/misc.html">Others</a></li>
+                    </ul>
+                </li>
+
+                <li class="collapse sec-graph">
+                    <span>2. Graphing</span>
+                    <ul>
+                        <li><a href="2-graphing/index.html">Overview</a></li>
+                        <li><a href="2-graphing/plotting.html">Plotting Graphs</a></li>
+                        <li><a href="2-graphing/navigation.html">Navigating the Plane</a></li>
+                        <li><a href="2-graphing/zoom.html">Zoom (advanced)</a></li>
+                        <li><a href="2-graphing/trace.html">Graph Trace</a></li>
+                        <li><a href="2-graphing/analyze.html">Analyze Graph</a></li>
+                        <li><a href="2-graphing/table.html">Split-Screen Table</a></li>
+                        <li><a href="2-graphing/misc.html">Others</a></li>
+                    </ul>
+                </li>
+
+                <li class="collapse sec-stats">
+                    <span>3. Lists &amp; Statistics</span>
+                    <ul>
+                        <li><a href="3-statistics/index.html">Overview</a></li>
+                        <li><a href="3-statistics/basics.html">Basic actions and operations</a></li>
+                        <li><a href="3-statistics/formulas.html">Cell Propagation and formulas</a></li>
+                        <li><a href="3-statistics/univariate.html">Univariate Statistics</a></li>
+                        <li><a href="3-statistics/bivariate-regression.html">Bivariate Statistics &amp; Regression</a></li>
+                        <li><a href="3-statistics/euler.html">Euler's Method &amp; iterative methods</a></li>
+                    </ul>
+                </li>
+
+                <li class="sec-other"><a href="4-cheatsheet/index.html"><span>Cheat Sheet</span></a></li>
+
+                <li class="collapse sec-other">
+                    <span>Others</span>
+                    <ul>
+                        <li><a href="5-others/index.html">Tips</a></li>
+                        <li><a href="5-others/abouttheauthor.html">About the Author</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- ── MAIN CONTENT ──────────────────────────────── -->
+        <main>
+
+            <section class="intro">
+                <h1>GDC for Dummies</h1>
+                <p>A complete reference for using the TI-Nspire CX CAS graphic display calculator — from basic arithmetic to calculus, statistics, and beyond.</p>
+            </section>
+
+            <section class="faq">
+                <h2>Browse by section</h2>
+                <div class="card-grid">
+                    <a href="0-how-to-use/index.html" style="text-decoration:none">
+                        <div class="card">
+                            <div class="card-title">How to use the GDC</div>
+                            <div class="card-desc">Hardware overview, navigating pages, and understanding the interface.</div>
+                        </div>
+                    </a>
+                    <a href="1-calculator/index.html" style="text-decoration:none">
+                        <div class="card sec-calc">
+                            <div class="card-title">1. Calculator</div>
+                            <div class="card-desc">Arithmetic, algebra, calculus, probability, finance, matrices, and more.</div>
+                        </div>
+                    </a>
+                    <a href="2-graphing/index.html" style="text-decoration:none">
+                        <div class="card sec-graph">
+                            <div class="card-title">2. Graphing</div>
+                            <div class="card-desc">Plotting, tracing, zooming, analyzing, and split-screen table view.</div>
+                        </div>
+                    </a>
+                    <a href="3-statistics/index.html" style="text-decoration:none">
+                        <div class="card sec-stats">
+                            <div class="card-title">3. Lists &amp; Statistics</div>
+                            <div class="card-desc">Spreadsheets, regression, distributions, and Euler's method.</div>
+                        </div>
+                    </a>
+                    <a href="4-cheatsheet/index.html" style="text-decoration:none">
+                        <div class="card sec-other">
+                            <div class="card-title">Cheat Sheet</div>
+                            <div class="card-desc">Quick-reference summaries for calculator, graphing, and statistics.</div>
+                        </div>
+                    </a>
+                    <a href="5-others/index.html" style="text-decoration:none">
+                        <div class="card sec-other">
+                            <div class="card-title">Others</div>
+                            <div class="card-desc">Tips, common mistakes, and miscellaneous guides.</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="references">
+                <h2>References &amp; Accreditation</h2>
+                <p>Sources will go here.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer>
+        <p>GDC for Dummies — Graphic Display Calculator Guide</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="components/load.js"></script>
+</body>
+</html>

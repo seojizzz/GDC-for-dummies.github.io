@@ -1,0 +1,892 @@
+/* ============================================================
+   GFD — Graphic Display Calculator Guide
+   styles.css
+   
+   Section color palette:
+     --color-how    : neutral slate  (How to Use)
+     --color-calc   : sky blue       (Calculator)
+     --color-graph  : cobalt blue    (Graphing)
+     --color-stats  : forest green   (Statistics)
+     --color-other  : deep purple    (Others / Cheatsheet)
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design Tokens ────────────────────────────────────────── */
+:root {
+  /* Section accent colours */
+  --color-how:      #64748b;   /* slate */
+  --color-calc:     #0ea5e9;   /* sky blue */
+  --color-graph:    #1d4ed8;   /* cobalt blue */
+  --color-stats:    #16a34a;   /* forest green */
+  --color-other:    #7c3aed;   /* deep purple */
+
+  /* Tinted backgrounds (5% tint for section pages) */
+  --tint-how:       #f1f5f9;
+  --tint-calc:      #f0f9ff;
+  --tint-graph:     #eff6ff;
+  --tint-stats:     #f0fdf4;
+  --tint-other:     #faf5ff;
+
+  /* Base palette — light mode */
+  --bg:             #ffffff;
+  --bg-secondary:   #f8fafc;
+  --bg-tertiary:    #f1f5f9;
+  --border:         #e2e8f0;
+  --border-strong:  #cbd5e1;
+  --text:           #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #94a3b8;
+  --link:           #0ea5e9;
+  --link-hover:     #0284c7;
+
+  /* Header */
+  --header-bg:      #0f172a;
+  --header-text:    #f8fafc;
+  --header-h:       64px;
+
+  /* Nav bar */
+  --nav-bg:         #ffffff;
+  --nav-border:     #e2e8f0;
+  --nav-h:          48px;
+
+  /* Sidebar */
+  --sidebar-w:      280px;
+
+  /* Typography */
+  --font-display:   'DM Serif Display', Georgia, serif;
+  --font-body:      'DM Sans', system-ui, sans-serif;
+  --font-mono:      'JetBrains Mono', 'Courier New', monospace;
+
+  /* Radii & shadows */
+  --radius-sm:      4px;
+  --radius:         8px;
+  --radius-lg:      14px;
+  --shadow-sm:      0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow:         0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:      0 10px 30px rgba(0,0,0,.12);
+
+  /* Transitions */
+  --t:              150ms ease;
+  --t-med:          250ms ease;
+}
+
+/* ── Dark mode overrides ──────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:             #0f172a;
+    --bg-secondary:   #1e293b;
+    --bg-tertiary:    #334155;
+    --border:         #1e293b;
+    --border-strong:  #334155;
+    --text:           #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted:     #64748b;
+    --link:           #38bdf8;
+    --link-hover:     #7dd3fc;
+
+    --header-bg:      #020617;
+    --header-text:    #f1f5f9;
+
+    --nav-bg:         #0f172a;
+    --nav-border:     #1e293b;
+
+    --tint-how:       #1e293b;
+    --tint-calc:      #082f49;
+    --tint-graph:     #0c1a4d;
+    --tint-stats:     #052e16;
+    --tint-other:     #2e1065;
+
+    --shadow-sm:      0 1px 3px rgba(0,0,0,.3);
+    --shadow:         0 4px 12px rgba(0,0,0,.4);
+    --shadow-lg:      0 10px 30px rgba(0,0,0,.5);
+  }
+}
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: var(--header-h) var(--nav-h) 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main";
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color var(--t);
+}
+a:hover { color: var(--link-hover); }
+
+ul { list-style: none; }
+
+/* ── Typography ───────────────────────────────────────────── */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: .5em;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: .5em;
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: .4em;
+}
+p { margin-bottom: 1em; }
+p:last-child { margin-bottom: 0; }
+
+code, kbd {
+  font-family: var(--font-mono);
+  font-size: .875em;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .1em .35em;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.main-header {
+  grid-area: header;
+  background: var(--header-bg);
+  color: var(--header-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: var(--shadow);
+}
+
+.header-left .logo a {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--header-text);
+  letter-spacing: .04em;
+  transition: opacity var(--t);
+}
+.header-left .logo a:hover { opacity: .8; }
+
+/* Coloured underline bar beneath logo */
+.header-left .logo a::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--color-calc)  0%,
+    var(--color-graph) 33%,
+    var(--color-stats) 66%,
+    var(--color-other) 100%
+  );
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.search-bar {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius);
+  color: var(--header-text);
+  font-family: var(--font-body);
+  font-size: .875rem;
+  padding: .45rem 1rem;
+  width: 220px;
+  transition: background var(--t), border-color var(--t), width var(--t-med);
+}
+.search-bar::placeholder { color: rgba(255,255,255,.45); }
+.search-bar:focus {
+  outline: none;
+  background: rgba(255,255,255,.15);
+  border-color: var(--color-calc);
+  width: 280px;
+}
+
+.menu-btn {
+  display: none;     /* shown on mobile via media query */
+  background: none;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: var(--radius-sm);
+  color: var(--header-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: .3rem .55rem;
+  transition: background var(--t);
+}
+.menu-btn:hover { background: rgba(255,255,255,.1); }
+
+/* ── Contents / Nav Bar ───────────────────────────────────── */
+.contents-bar {
+  grid-area: nav;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  position: sticky;
+  top: var(--header-h);
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.contents-bar > ul {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  padding: 0 1rem;
+  gap: .1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.contents-bar > ul::-webkit-scrollbar { display: none; }
+
+.contents-bar > ul > li {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Top-level links */
+.contents-bar > ul > li > a,
+.contents-bar > ul > li > .dropdown-title {
+  display: flex;
+  align-items: center;
+  height: var(--nav-h);
+  padding: 0 .85rem;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color var(--t), border-color var(--t), background var(--t);
+}
+.contents-bar > ul > li > a:hover,
+.contents-bar > ul > li > .dropdown-title:hover {
+  color: var(--text);
+  background: var(--bg-secondary);
+}
+
+/* Section-specific accent on hover/active */
+.contents-bar > ul > li.sec-how    > a:hover,
+.contents-bar > ul > li.sec-how    > a.active { border-color: var(--color-how);   color: var(--color-how);   }
+.contents-bar > ul > li.sec-calc   > a:hover,
+.contents-bar > ul > li.sec-calc   > a.active { border-color: var(--color-calc);  color: var(--color-calc);  }
+.contents-bar > ul > li.sec-graph  > a:hover,
+.contents-bar > ul > li.sec-graph  > a.active { border-color: var(--color-graph); color: var(--color-graph); }
+.contents-bar > ul > li.sec-stats  > a:hover,
+.contents-bar > ul > li.sec-stats  > a.active { border-color: var(--color-stats); color: var(--color-stats); }
+.contents-bar > ul > li.sec-other  > a:hover,
+.contents-bar > ul > li.sec-other  > a.active { border-color: var(--color-other); color: var(--color-other); }
+
+/* Same for dropdown-title buttons */
+.contents-bar li.sec-how  > .dropdown-title:hover { border-color: var(--color-how);   color: var(--color-how);   }
+.contents-bar li.sec-calc > .dropdown-title:hover { border-color: var(--color-calc);  color: var(--color-calc);  }
+.contents-bar li.sec-graph> .dropdown-title:hover { border-color: var(--color-graph); color: var(--color-graph); }
+.contents-bar li.sec-stats> .dropdown-title:hover { border-color: var(--color-stats); color: var(--color-stats); }
+.contents-bar li.sec-other> .dropdown-title:hover { border-color: var(--color-other); color: var(--color-other); }
+
+/* Dropdown menus */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(var(--nav-h) - 2px);
+  left: 0;
+  min-width: 230px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid currentColor;
+  border-radius: 0 var(--radius) var(--radius) var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: .4rem 0;
+  z-index: 300;
+}
+
+/* Show on hover (desktop) OR when JS adds .open (touch/click) */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown.open .dropdown-menu {
+  display: block;
+  animation: menuFadeIn .15s ease;
+}
+
+/* Ensure the top-level <a> fills the full li height so the
+   hover zone matches what the user sees */
+.contents-bar > ul > li.dropdown {
+  position: relative;
+}
+
+.contents-bar > ul > li.dropdown > a,
+.contents-bar > ul > li.dropdown > .dropdown-title {
+  display: flex;
+  align-items: center;
+  height: var(--nav-h);
+  padding: 0 .85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: .55rem 1.1rem;
+  font-size: .82rem;
+  color: var(--text-secondary);
+  transition: background var(--t), color var(--t), padding-left var(--t);
+}
+.dropdown-menu li a:hover {
+  background: var(--bg-secondary);
+  color: var(--text);
+  padding-left: 1.4rem;
+}
+
+/* Section colour strip on dropdown items */
+.sec-calc  .dropdown-menu li a:hover { color: var(--color-calc);  }
+.sec-graph .dropdown-menu li a:hover { color: var(--color-graph); }
+.sec-stats .dropdown-menu li a:hover { color: var(--color-stats); }
+.sec-other .dropdown-menu li a:hover { color: var(--color-other); }
+
+/* ── Mobile Sidebar ───────────────────────────────────────── */
+.sidebar {
+  display: none;  /* hidden on desktop */
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  width: var(--sidebar-w);
+  height: calc(100vh - var(--header-h));
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 1rem 0;
+  z-index: 150;
+  transform: translateX(-100%);
+  transition: transform var(--t-med);
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: var(--header-h);
+  background: rgba(0,0,0,.45);
+  z-index: 140;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.open { display: block; }
+
+/* Sidebar items */
+.sidebar > ul > li {
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar > ul > li > span,
+.sidebar > ul > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .8rem 1.25rem;
+  cursor: pointer;
+  transition: background var(--t), color var(--t);
+}
+.sidebar > ul > li > span:hover,
+.sidebar > ul > li > a:hover {
+  background: var(--bg-secondary);
+  color: var(--text);
+}
+
+/* Collapse chevron */
+.sidebar > ul > li > span::after {
+  content: '›';
+  font-size: 1.1rem;
+  transition: transform var(--t-med);
+}
+.sidebar > ul > li.open > span::after {
+  transform: rotate(90deg);
+}
+
+/* Sidebar sub-items */
+.sidebar ul ul {
+  display: none;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+.sidebar ul li.open > ul {
+  display: block;
+}
+.sidebar ul ul li a {
+  display: block;
+  padding: .6rem 1.25rem .6rem 2rem;
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  transition: background var(--t), color var(--t), padding-left var(--t);
+}
+.sidebar ul ul li a:hover {
+  background: var(--bg-tertiary);
+  color: var(--text);
+  padding-left: 2.3rem;
+}
+
+/* Section colour left-border on sidebar items */
+.sidebar .sec-calc  > span { border-left: 3px solid var(--color-calc);  }
+.sidebar .sec-graph > span { border-left: 3px solid var(--color-graph); }
+.sidebar .sec-stats > span { border-left: 3px solid var(--color-stats); }
+.sidebar .sec-other > span { border-left: 3px solid var(--color-other); }
+.sidebar .sec-how   > span { border-left: 3px solid var(--color-how);   }
+
+/* ── Page Layout (sidebar + content) ─────────────────────── */
+.page-wrapper {
+  grid-area: main;
+  display: flex;
+  min-height: 0;
+}
+
+/* In-page sidebar (desktop, content pages only) */
+.page-sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  padding: 1.5rem 0;
+  position: sticky;
+  top: calc(var(--header-h) + var(--nav-h));
+  height: calc(100vh - var(--header-h) - var(--nav-h));
+  overflow-y: auto;
+  background: var(--bg-secondary);
+}
+
+.page-sidebar-title {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 1.25rem .5rem;
+}
+
+.page-sidebar ul li a {
+  display: block;
+  padding: .45rem 1.25rem;
+  font-size: .82rem;
+  color: var(--text-secondary);
+  border-left: 2px solid transparent;
+  transition: color var(--t), border-color var(--t), background var(--t);
+}
+.page-sidebar ul li a:hover,
+.page-sidebar ul li a.active {
+  color: var(--text);
+  background: var(--bg-tertiary);
+}
+
+/* Section-tinted active state */
+.sec-calc  .page-sidebar ul li a.active,
+.sec-calc  .page-sidebar ul li a:hover { border-color: var(--color-calc);  color: var(--color-calc);  }
+.sec-graph .page-sidebar ul li a.active,
+.sec-graph .page-sidebar ul li a:hover { border-color: var(--color-graph); color: var(--color-graph); }
+.sec-stats .page-sidebar ul li a.active,
+.sec-stats .page-sidebar ul li a:hover { border-color: var(--color-stats); color: var(--color-stats); }
+.sec-other .page-sidebar ul li a.active,
+.sec-other .page-sidebar ul li a:hover { border-color: var(--color-other); color: var(--color-other); }
+
+/* ── Main Content ─────────────────────────────────────────── */
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 3rem 2rem 4rem;
+  max-width: 860px;
+}
+
+/* Section tinted backgrounds (add class to <body> or <main>) */
+body.sec-calc  main { background: var(--tint-calc);  }
+body.sec-graph main { background: var(--tint-graph); }
+body.sec-stats main { background: var(--tint-stats); }
+body.sec-other main { background: var(--tint-other); }
+body.sec-how   main { background: var(--tint-how);   }
+
+/* ── Hero / Intro Section ─────────────────────────────────── */
+.intro {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.intro h1 {
+  background: linear-gradient(135deg,
+    var(--color-calc)  0%,
+    var(--color-graph) 40%,
+    var(--color-stats) 75%,
+    var(--color-other) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+/* Section hero heading accent */
+.section-hero {
+  padding: 2rem 0 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--section-color, var(--border));
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t);
+  cursor: default;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Section accent on card top border */
+.card.sec-calc  { border-top: 3px solid var(--color-calc);  }
+.card.sec-calc:hover  { border-color: var(--color-calc); }
+
+.card.sec-graph { border-top: 3px solid var(--color-graph); }
+.card.sec-graph:hover { border-color: var(--color-graph); }
+
+.card.sec-stats { border-top: 3px solid var(--color-stats); }
+.card.sec-stats:hover { border-color: var(--color-stats); }
+
+.card.sec-other { border-top: 3px solid var(--color-other); }
+.card.sec-other:hover { border-color: var(--color-other); }
+
+.card-title {
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: .4rem;
+  color: var(--text);
+}
+
+.card-desc {
+  font-size: .8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── FAQ / Popular Topics ─────────────────────────────────── */
+.faq {
+  margin-bottom: 2.5rem;
+}
+
+.faq h2, .references h2 {
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.faq ul {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.faq ul li {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .7rem 1.1rem;
+  font-size: .9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--t), color var(--t), border-color var(--t), transform var(--t);
+}
+.faq ul li:hover {
+  background: var(--bg-tertiary);
+  color: var(--text);
+  transform: translateX(4px);
+  border-color: var(--border-strong);
+}
+
+/* ── References ───────────────────────────────────────────── */
+.references {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.references p {
+  color: var(--text-secondary);
+  font-size: .875rem;
+}
+
+/* ── Content page elements ────────────────────────────────── */
+
+/* Step blocks */
+.step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--section-color, var(--color-calc));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-top: .15rem;
+}
+
+.step-body h3 { margin-bottom: .25rem; }
+.step-body p  { font-size: .9rem; color: var(--text-secondary); }
+
+/* Callout / tip box */
+.callout {
+  border-left: 4px solid var(--section-color, var(--color-calc));
+  background: var(--bg-secondary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: .9rem 1.2rem;
+  margin: 1.5rem 0;
+  font-size: .9rem;
+  color: var(--text-secondary);
+}
+
+.callout strong {
+  display: block;
+  margin-bottom: .25rem;
+  color: var(--text);
+}
+
+/* Key / button display */
+.key {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-strong);
+  border-bottom: 3px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: .15em .5em;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+/* Table */
+.gfd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .875rem;
+  margin: 1.5rem 0;
+}
+
+.gfd-table th {
+  background: var(--bg-tertiary);
+  padding: .6rem .9rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.gfd-table td {
+  padding: .55rem .9rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.gfd-table tr:last-child td { border-bottom: none; }
+.gfd-table tr:hover td {
+  background: var(--bg-secondary);
+  color: var(--text);
+}
+
+/* Screenshot / image placeholder */
+.screenshot {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin: 1.5rem 0;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--link); }
+.breadcrumb .sep { opacity: .5; }
+.breadcrumb .current { color: var(--text-secondary); font-weight: 500; }
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+
+/* ── Utility ──────────────────────────────────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .page-sidebar { display: none; }
+  main { padding: 2rem 1.25rem 3rem; max-width: 100%; }
+}
+
+@media (max-width: 680px) {
+  .contents-bar { display: none; }
+
+  body {
+    grid-template-rows: var(--header-h) 1fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  .menu-btn { display: flex; }
+
+  .sidebar { display: block; }
+
+  .search-bar { width: 150px; }
+  .search-bar:focus { width: 180px; }
+
+  main { padding: 1.5rem 1rem 3rem; }
+}
+
+/* ── Prev / Next page navigation ─────────────────────────── */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  gap: 1rem;
+}
+
+.page-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .55rem 1rem;
+  transition: background var(--t), color var(--t), border-color var(--t);
+}
+.page-nav a:hover {
+  background: var(--bg-tertiary);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+/* Section colour on page-nav hover */
+.sec-calc  .page-nav a:hover { color: var(--color-calc);  border-color: var(--color-calc);  }
+.sec-graph .page-nav a:hover { color: var(--color-graph); border-color: var(--color-graph); }
+.sec-stats .page-nav a:hover { color: var(--color-stats); border-color: var(--color-stats); }
+.sec-other .page-nav a:hover { color: var(--color-other); border-color: var(--color-other); }
+
+/* ── MathJax display tweaks ───────────────────────────────── */
+mjx-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+mjx-container[display="true"] {
+  margin: 1.25rem 0;
+}
+
+/* Inline code inside callouts */
+.callout code {
+  display: block;
+  margin: .2rem 0;
+  background: var(--bg-tertiary);
+  padding: .2rem .5rem;
+  border-radius: var(--radius-sm);
+  font-size: .82rem;
+}

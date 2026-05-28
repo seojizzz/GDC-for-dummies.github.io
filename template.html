@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <!--
+    PATH DEPTH NOTE
+    This template is for pages one folder deep (e.g. 1-calculator/define.html).
+    All ../ paths are correct at that depth.
+    -->
+    <title>PAGE TITLE — GFD</title>
+</head>
+
+<!--
+    HOW TO USE THIS TEMPLATE
+    ════════════════════════
+    1.  <body class="">  →  add the right section class:
+            sec-how | sec-calc | sec-graph | sec-stats | sec-other
+
+    2.  <title>          →  "Topic Name — GFD"
+
+    3.  Breadcrumb       →  update the section <a> href and label,
+                            and the .current span text.
+
+    4.  <h1>             →  page heading
+
+    5.  Page sidebar     →  one <li> per <h2> below; href="#matching-id"
+
+    6.  Content          →  replace each  SECTION  block.
+                            Available components:
+                              .step + .step-num + .step-body  →  numbered steps
+                              .callout                         →  tip / warning / example box
+                              .key                             →  calculator key  e.g. <kbd class="key">Enter</kbd>
+                              .gfd-table                       →  reference table
+                              .screenshot                      →  image placeholder
+                            LaTeX:  \( inline \)  or  \[ display \]
+
+    7.  page-nav         →  update ← prev and next → hrefs.
+                            Use relative paths: "numbers.html", "../index.html", etc.
+
+    BREADCRUMB HREF REFERENCE
+    ─────────────────────────
+    From inside any section subfolder (e.g. 1-calculator/):
+      Home          →  ../index.html   (or just "/")
+      Section index →  index.html      (same folder)
+
+    SECTION CLASS REFERENCE
+    ───────────────────────
+    sec-how    0-how-to-use/
+    sec-calc   1-calculator/
+    sec-graph  2-graphing/
+    sec-stats  3-statistics/
+    sec-other  4-cheatsheet/  5-others/
+-->
+
+<body class="">
+
+    <div id="header-placeholder"></div>
+    <div id="nav-placeholder"></div>
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <div class="page-wrapper">
+        <div id="sidebar-placeholder"></div>
+
+        <!-- In-page sidebar (desktop only) -->
+        <aside class="page-sidebar">
+            <p class="page-sidebar-title">On this page</p>
+            <ul>
+                <li><a href="#section-one">Section one</a></li>
+                <li><a href="#section-two">Section two</a></li>
+                <!-- Add one <li> per <h2> in the content below -->
+            </ul>
+        </aside>
+
+        <main>
+
+            <!-- BREADCRUMB — update section name and href -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="sep" aria-hidden="true">›</span>
+                <a href="index.html">Section Name</a>
+                <span class="sep" aria-hidden="true">›</span>
+                <span class="current">Page Name</span>
+            </nav>
+
+            <h1>Page Title</h1>
+            <p>One or two sentences describing what this page covers.</p>
+
+            <!-- ══════════════════════════════════════════ -->
+            <!-- SECTION ONE                               -->
+            <!-- ══════════════════════════════════════════ -->
+            <section>
+                <h2 id="section-one">Section one</h2>
+                <p>Explain the concept here.</p>
+
+                <!-- Numbered steps -->
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h3>Step heading</h3>
+                        <p>Press <kbd class="key">Menu</kbd> → <strong>3. Algebra</strong> → <strong>1. Solve</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <h3>Step heading</h3>
+                        <p>Description of step.</p>
+                    </div>
+                </div>
+
+                <!-- Tip / warning callout -->
+                <div class="callout">
+                    <strong>Tip</strong>
+                    Tip text here. Use <kbd class="key">Ctrl</kbd> + <kbd class="key">Z</kbd> to undo.
+                </div>
+
+                <!-- Code / GDC input inside callout -->
+                <div class="callout">
+                    <strong>GDC input</strong>
+                    <code>nSolve(f(x)=0, x, 0, 5)</code>
+                </div>
+
+                <!-- Screenshot placeholder — replace with <img> when ready -->
+                <span class="screenshot">Screenshot: description of what is shown</span>
+
+            </section>
+
+            <!-- ══════════════════════════════════════════ -->
+            <!-- SECTION TWO                               -->
+            <!-- ══════════════════════════════════════════ -->
+            <section>
+                <h2 id="section-two">Section two</h2>
+                <p>Continue here.</p>
+
+                <!-- Inline LaTeX -->
+                <p>The formula is \( f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}} \).</p>
+
+                <!-- Display LaTeX -->
+                \[ \int_a^b f(x)\,dx \approx \sum_{i=0}^{n} f(x_i)\,\Delta x \]
+
+                <!-- Reference table -->
+                <table class="gfd-table">
+                    <thead>
+                        <tr>
+                            <th>Key / Menu path</th>
+                            <th>Action</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><kbd class="key">Menu</kbd> › 3 › 1</td>
+                            <td>nSolve</td>
+                            <td>Finds one root numerically</td>
+                        </tr>
+                        <tr>
+                            <td><kbd class="key">Menu</kbd> › 3 › 2</td>
+                            <td>linSolve</td>
+                            <td>Solves linear systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Common mistake callout -->
+                <div class="callout">
+                    <strong>Common mistake</strong>
+                    Describe a frequent error and how to avoid it.
+                </div>
+
+            </section>
+
+            <!-- PREV / NEXT — update hrefs -->
+            <nav class="page-nav" aria-label="Page navigation">
+                <a href="index.html">← Overview</a>
+                <a href="next-page.html">Next topic →</a>
+            </nav>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>GFD — Graphic Display Calculator Guide</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="../components/load.js"></script>
+</body>
+</html>
